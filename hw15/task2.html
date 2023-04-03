@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1> Задача 2</h1>
+	<p>
+
+Задача 2. Створити об’єкт «Авто». 
+Авто	
+
+Поля(властивості)
+Марка
+			Розмір бака
+			Кількість наявних літрів
+			Кількість місць
+			Кількість пасажирів
+Методи (дії)
+			Заправка на вказану кількість літрів
+			Виведення кількості пасажирів
+			Додавання пасажирів
+			Висадка пасажирів
+
+
+	</p>
+	<script>
+		function Auto(initModel, initTankSize, initLitres, initSeats, initPassengers) {
+			this.model = initModel,
+			this.tankSize = initTankSize,
+			this.litres = initLitres,
+			this.seats = initSeats,
+			this.passengers = initPassengers
+		}
+	
+			Auto.prototype.getRefuel = function (userLitres) {
+				if (userLitres>this.tankSize-this.litres) 
+					throw new Error('Пального більше ніж бак може вмістити')
+					this.litres = this.litres+ userLitres
+			}
+
+			Auto.prototype.getPassengersAmount = function () {
+				return this.passengers
+			}
+
+			Auto.prototype.addPassengers = function (userPassengerNumber){
+				if(this.seats<this.passengers+userPassengerNumber)
+				throw new Error('Пасажирів більше ніж місць в салоні')
+				this.passengers=this.passengers+userPassengerNumber
+			}
+
+			Auto.prototype.reducePassengers = function (userPassengers) {
+				if(this.passengers-userPassengers<0)
+				throw new Error('В салоні немає такої кількості пасажирів')
+				this.passengers=this.passengers-userPassengers
+			}
+
+		let auto1 = new Auto ('Audi',50,10,5,2)
+		let auto2 = new Auto ('Ford',40,20,7,5)
+		let auto3 = new Auto ('Opel',60,30,10,4)
+
+		console.log(auto1)
+		auto1.getRefuel(10)
+		console.log(auto2)
+		auto2.addPassengers(2)
+		console.log(auto3)
+		auto3.reducePassengers(2)
+		
+	</script>
+</body>
+
+</html>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1> Задача 5</h1>
+	<p>
+Розробити клас «Керівник танців»
+Поля
+		Масив імен хлопців
+		Масив імен дівчат
+Методи
+		Метод випадкового вибору імені хлопця
+		Метод випадкового вибору імені дівчини
+		Метод виведення пари для танців
+		Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+	</p>
+	<script>
+		class DanceDirector {
+			constructor (boysList, girlsList, interval){
+			this.boysNames = boysList
+			this.girlsNames = girlsList
+			this.interval = interval
+			}
+
+			getRandomBoyName(){
+				const randomIndex = Math.floor(Math.random()*this.boysNames.length)
+				return this.boysNames[randomIndex]
+			}
+
+			getRandomGirlName(){
+				const randomIndex = Math.floor(Math.random()*this.girlsNames.length)
+				return this.girlsNames[randomIndex]
+			}
+
+			getPair(){
+				let boy = this.getRandomBoyName()
+				let girl = this.getRandomGirlName()
+				return alert (`Парою для танців є ${boy} та ${girl}`)
+			}
+
+			run(){
+				setInterval(()=>{
+					this.getPair()
+				},this.interval*1000)
+			}
+		}
+		let boysList = ['Ivan', 'Victor', 'Oleg', 'Andrew', 'Mark']
+		let girlsList = ['Olga', 'Iryna', 'Mary', 'Helen', 'Nataly']
+		let dd = new DanceDirector(boysList, girlsList, 5)
+		dd.run()
+
+	</script>
+</body>
+
+</html>
+

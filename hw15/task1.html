@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1> Задача 1</h1>
+	<p>
+ Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+Тир	
+
+Поля(властивості) - Масив, у якому зберігається поле з зайцями
+Методи (дії) - Метод пострілу (задається позиція пострілу) 
+					Виведення ігрового поля
+
+	</p>
+	<script>
+		function ShootingGallery(cellsNum,hareNum) {
+			this.field = this.getShootingField(cellsNum,hareNum)
+		}
+//---Генерування масиву поля з зайцями
+
+		ShootingGallery.prototype.getRandomNum = function (minV,maxV) {
+			return minV+Math.floor(Math.random()*(maxV-minV+1))
+		}
+		ShootingGallery.prototype.getRandomIndex = function (cellsNum) {
+			let randomIndex = this.getRandomNum(0, cellsNum-1)
+			return randomIndex
+		}
+		ShootingGallery.prototype.getShootingField = function (cellsNum, hareNum) {
+			let shootingField = new Array(cellsNum).fill(0)
+			for (let i = 0; i < hareNum; i++) {
+				const harePos = this.getRandomIndex(cellsNum)
+				if(shootingField[harePos] !== 1) shootingField[harePos] = 1
+				else i--
+			}
+			return shootingField
+		}
+		
+//-----Задаю позицію пострілу
+		ShootingGallery.prototype.shootingPosition = function () {
+			let x = parseInt(prompt('Введіть номер клітинки для пострілу від 1-10'))
+			if (this.field[x-1]===1) {
+			alert('Влучив')
+			x--
+			}
+			else alert('Промах')
+		}
+
+//-----Виведення ігрового поля
+		ShootingGallery.prototype.printField = function () {
+			for (let i = 0; i < this.field.length; i++) {
+				if (this.field[i]===1)
+				document.write(`${this.field[i]}`)
+				else
+				document.write(`0`)
+			}
+		}
+		
+		let resultField = new ShootingGallery(10,3)
+		resultField.getShootingField()
+		resultField.shootingPosition()
+		resultField.printField()
+	</script>
+</body>
+
+</html>
+

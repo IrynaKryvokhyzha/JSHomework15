@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1> Задача 4</h1>
+	<p>
+Розробити клас Baner
+Поля
+		Масив об’єктів ( графічних зображень та посилань на сайти)
+методи
+		Метод випадкового вибору об’єкта (графічного зображення та посилання)
+		Метод виведення випадкового банера
+	</p>
+	<script>
+		class Baner {
+			constructor(banerArr){
+				this.banerArr = banerArr
+				
+			}
+
+			getRandomImg() {
+				let randomIndex = Math.floor(Math.random()*this.banerArr.length)
+				return randomIndex
+			}
+
+			showBaner() {
+				let randomIndex = this.getRandomImg()
+				document.write(`<a href="${this.banerArr[randomIndex].link}">
+					<img src="${this.banerArr[randomIndex].image}" alt="Image">
+					</a> `)
+			}
+		}
+		let banerArr = [
+			{ 
+				image:"img/1.jpg", 
+				link:"https://enlear.academy/5-best-javascript-style-guides-640485e7b630",
+			},
+			{ 
+				image:"img/2.jpeg", 
+				link:"https://www.mheducation.com/highered/product/javascript-beginner-s-guide-fifth-edition-pollock/M9781260457681.html",
+			},
+			{
+				image:"img/3.jpg", 
+				link:"https://itnext.io/a-beginners-guide-to-understanding-javascript-closures-b5eb57fdbeb4",
+			},
+		]
+		let a = new Baner(banerArr)
+		a.showBaner()
+	</script>
+</body>
+
+</html>
+
